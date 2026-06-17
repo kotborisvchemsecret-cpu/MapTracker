@@ -4,11 +4,16 @@ using System.Text;
 
 namespace MapTracker.Models
 {
-    public class Route
+    public class Route : IRoute
     {
-        public List<Coordinate> Path { get; init; } = new();
+        public List<Coordinate> Path { get; }
 
         private double? _totalDistance;
+
+        public Route(List<Coordinate> path)
+        {
+            Path = path;
+        }
 
         public double TotalDistance =>
             _totalDistance ??= CalculateTotalDistance();
