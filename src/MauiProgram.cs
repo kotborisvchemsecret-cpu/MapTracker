@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 
-namespace src;
+namespace MapTracker;
 
 public static class MauiProgram
 {

@@ -1,6 +1,6 @@
 ﻿using Foundation;
 
-namespace src;
+namespace MapTracker;
 
 [Register("AppDelegate")]
 public class AppDelegate : MauiUIApplicationDelegate

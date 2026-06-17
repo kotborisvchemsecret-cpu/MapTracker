@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace src;
+namespace MapTracker;
 
 public partial class App : Application
 {

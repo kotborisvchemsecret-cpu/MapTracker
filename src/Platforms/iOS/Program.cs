@@ -1,7 +1,7 @@
 ﻿using ObjCRuntime;
 using UIKit;
 
-namespace src;
+namespace MapTracker;
 
 public class Program
 {

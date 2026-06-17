@@ -1,4 +1,4 @@
-﻿namespace src;
+﻿namespace MapTracker;
 
 public partial class MainPage : ContentPage
 {
