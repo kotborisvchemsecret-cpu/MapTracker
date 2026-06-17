@@ -5,4 +5,34 @@
              xmlns:models="clr-namespace:MapTracker.Models"
              x:Class="MapTracker.Views.LocationView">
 
+    <ContentPage.BindingContext>
+        <vm:LocationViewModel/>
+    </ContentPage.BindingContext>
+
+
+    <Grid
+        RowDefinitions = "*,*,2*">
+
+        <Label
+            Text="{Binding CurrLatitude}"
+            TextColor="White"
+            Grid.Row="0"
+            VerticalOptions="Center"
+            HorizontalOptions="Center"/>
+        
+        <Label
+            Text="{Binding CurrLongitude}"
+            TextColor="White"
+            Grid.Row="1"
+            VerticalOptions="Center"
+            HorizontalOptions="Center"/>
+
+        <Button
+            Text="Get Location"
+            Command="{Binding GetCurrentLocationCommand}"
+            Grid.Row="2"
+            VerticalOptions="Center"
+            HorizontalOptions="Center"/>
+
+    </Grid>
 </ContentPage>
