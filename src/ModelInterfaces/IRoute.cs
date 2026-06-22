@@ -1,4 +1,6 @@
-﻿namespace MapTracker.Models
+﻿using MapTracker.Models;
+
+namespace MapTracker.ModelInterfaces
 {
     public interface IRoute
     {

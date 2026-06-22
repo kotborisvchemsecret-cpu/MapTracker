@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MapTracker.ModelInterfaces;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -30,7 +31,6 @@ namespace MapTracker.Models
             return total;
         }
 
-        //* Calculates the position (coordinates) along the route based on a progress value between 0 and 1.
         public Coordinate Position(double progress)
         {
             if (Path.Count == 0)
