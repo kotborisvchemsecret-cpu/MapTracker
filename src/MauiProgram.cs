@@ -1,24 +1,17 @@
-﻿using Microsoft.Extensions.Logging;
-
-namespace MapTracker;
+﻿using MapTracker;
+using Microsoft.Maui.Controls.Maps;
+using Microsoft.Maui.Maps;
 
 public static class MauiProgram
 {
-	public static MauiApp CreateMauiApp()
-	{
-		var builder = MauiApp.CreateBuilder();
-		builder
-			.UseMauiApp<App>()
-			.ConfigureFonts(fonts =>
-			{
-				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
-				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
-			});
+    public static MauiApp CreateMauiApp()
+    {
+        var builder = MauiApp.CreateBuilder();
 
-#if DEBUG
-		builder.Logging.AddDebug();
-#endif
+        builder
+            .UseMauiApp<App>()
+            .UseMauiMaps();   // now resolves
 
-		return builder.Build();
-	}
+        return builder.Build();
+    }
 }

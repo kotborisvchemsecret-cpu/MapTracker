@@ -1,17 +1,16 @@
-﻿using MapTracker.ModelInterfaces;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace MapTracker.Models
 {
-    public class Route : IRoute
+    public class Route
     {
-        public List<Coordinate> Path { get; }
+        public List<(double Lat, double Lng)> Path { get; }
 
         private double? _totalDistance;
 
-        public Route(List<Coordinate> path)
+        public Route(List<(double Lat, double Lng)> path)
         {
             Path = path;
         }
@@ -31,7 +30,7 @@ namespace MapTracker.Models
             return total;
         }
 
-        public Coordinate Position(double progress)
+        public (double Lat, double Lng) Position(double progress)
         {
             if (Path.Count == 0)
                 throw new InvalidOperationException("Path is empty.");
@@ -46,8 +45,8 @@ namespace MapTracker.Models
 
             for (int i = 1; i < Path.Count; i++)
             {
-                Coordinate start = Path[i - 1];
-                Coordinate end = Path[i];
+                (double Lat, double Lng) start = Path[i - 1];
+                (double Lat, double Lng) end = Path[i];
 
                 double segmentDistance = Distance(start, end);
 
@@ -62,14 +61,9 @@ namespace MapTracker.Models
                     double ratio =
                         distanceIntoSegment / segmentDistance;
 
-                    return new Coordinate
-                    {
-                        Latitude = start.Latitude +
-                                   ratio * (end.Latitude - start.Latitude),
-
-                        Longitude = start.Longitude +
-                                    ratio * (end.Longitude - start.Longitude)
-                    };
+                    return new(start.Lat +
+                                   ratio * (end.Lat - start.Lat), start.Lng +
+                                    ratio * (end.Lng - start.Lng));
                 }
 
                 accumulatedDistance += segmentDistance;
@@ -79,11 +73,11 @@ namespace MapTracker.Models
         }
 
         private static double Distance(
-            Coordinate a,
-            Coordinate b)
+            (double Lat, double Lng) a,
+            (double Lat, double Lng) b)
         {
-            double dx = b.Longitude - a.Longitude;
-            double dy = b.Latitude - a.Latitude;
+            double dx = b.Lng - a.Lng;
+            double dy = b.Lat - a.Lat;
 
             return Math.Sqrt(dx * dx + dy * dy);
         }
