@@ -75,7 +75,19 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Views\" />
+	  <Folder Include="ModelInterfaces\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="Views\MapView.xaml.cs">
+	    <DependentUpon>MapView.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="Views\MapView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	</ItemGroup>
 
 </Project>
